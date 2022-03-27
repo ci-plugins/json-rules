@@ -19,6 +19,18 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 8
+      - name: Cache SonarCloud packages
+        uses: actions/cache@v1
+        with:
+          path: ~/.sonar/cache
+          key: ${{ runner.os }}-sonar
+          restore-keys: ${{ runner.os }}-sonar
+      - name: Cache Maven packages
+        uses: actions/cache@v1
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-m2
 
       - name: Release Maven package
         uses: samuelmeuli/action-maven-publish@v1
@@ -27,3 +39,4 @@ jobs:
           gpg_passphrase: ${{ secrets.SIGNING_PASSWORD }}
           nexus_username: ${{ secrets.SONATYPE_USERNAME }}
           nexus_password: ${{ secrets.SONATYPE_PASSWORD }}
+          maven_profiles: release
