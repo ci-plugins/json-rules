@@ -4,19 +4,19 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>io.appform.rules</groupId>
+    <groupId>com.tencent.devops.rules</groupId>
     <artifactId>json-rules</artifactId>
-    <version>1.0.12</version>
+    <version>1.0.13</version>
     <name>JSON Rules</name>
     <description>Json serializable rule engine</description>
-    <url>https://github.com/santanusinha/json-rules</url>
+    <url> https://github.com/ci-plugins/json-rules</url>
     <inceptionYear>2016</inceptionYear>
 
     <scm>
-        <connection>scm:git:https://github.com/santanusinha/json-rules.git</connection>
-        <developerConnection>scm:git:https://github.com/santanusinha/json-rules.git</developerConnection>
+        <connection>scm:https://github.com/ci-plugins/json-rules.git</connection>
+        <developerConnection>scm:git:https://github.com/ci-plugins/json-rules.git</developerConnection>
         <tag>HEAD</tag>
-        <url>https://github.com/santanusinha/json-rules.git</url>
+        <url>https://github.com/ci-plugins/json-rules.git</url>
     </scm>
 
     <licenses>
@@ -30,14 +30,9 @@
 
     <developers>
         <developer>
-            <id>santanusinha</id>
-            <name>Santanu Sinha</name>
-            <email>santanu.sinha@gmail.com</email>
-        </developer>
-        <developer>
-            <id>misbms</id>
-            <name>Mohammed Irfanulla S</name>
-            <email>misbms@gmail.com</email>
+            <id>devops</id>
+            <name>devops</name>
+            <email>devops@tencent.com</email>
         </developer>
     </developers>
 
@@ -46,11 +41,6 @@
         <system>GitHub Issues</system>
         <url>https://github.com/santanusinha/json-rules/issues</url>
     </issueManagement>
-
-    <ciManagement>
-        <system>Travis CI</system>
-        <url>https://travis-ci.org/santanusinha/json-rules</url>
-    </ciManagement>
 
     <distributionManagement>
         <snapshotRepository>
