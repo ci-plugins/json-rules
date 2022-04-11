@@ -163,7 +163,7 @@ public class SubStringBeforeOperationTest {
 
     @Test
     public void testRule() throws Exception {
-        final String ruleRepr = TestUtils.read("/substringBeforeOperation.rule");
+        final String ruleRepr = TestUtils.read("/subStringBeforeOperation.rule");
         Rule rule = Rule.create(ruleRepr, mapper);
         JsonNode node = mapper.readTree("{ \"value\": \"Hello World\", \"string\" : \"Hello\" }");
         Assert.assertTrue(rule.matches(node));
