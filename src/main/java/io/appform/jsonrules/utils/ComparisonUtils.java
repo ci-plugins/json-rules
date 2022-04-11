@@ -31,6 +31,7 @@ public class ComparisonUtils {
     public static final Configuration SUPPRESS_EXCEPTION_CONFIG = Configuration.defaultConfiguration()
             .addOptions(Option.SUPPRESS_EXCEPTIONS);
     public static final ObjectMapper mapper = new ObjectMapper();
+    public static final AntPathMatcher matcher = new AntPathMatcher();
 
     public static int compare(JsonNode evaluatedNode, Object value) {
         int comparisonResult = 0;
@@ -132,5 +133,13 @@ public class ComparisonUtils {
         return defaultResult;
     }
 
-    private ComparisonUtils() {}
+    public static boolean compareForPattern(JsonNode evaluatedNode, Object value) {
+        boolean comparisonResult = false;
+        if (evaluatedNode.isTextual()) {
+            comparisonResult = matcher.match(String.valueOf(value), evaluatedNode.asText());
+        }
+        return comparisonResult;
+    }
+
+    private ComparisonUtils(JsonNode evaluatedNode, String value) {}
 }

@@ -34,7 +34,7 @@ public class EmptyExpression extends StringJsonPathBasedExpression {
 
     @Builder
     public EmptyExpression(String path, Boolean defaultResult, PreOperation<?> preoperation) {
-        super(ExpressionType.empty, path, null, false, false, defaultResult, preoperation);
+        super(ExpressionType.empty, path, null, false, false, defaultResult, preoperation, false);
     }
 
     @Override

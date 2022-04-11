@@ -40,17 +40,27 @@ public abstract class StringJsonPathBasedExpression extends JsonPathBasedExpress
     private String value;
     private boolean ignoreCase;
     private boolean extractValueFromPath;
+    private boolean valueCompareToPath;
 
     protected StringJsonPathBasedExpression(ExpressionType type) {
         super(type);
     }
 
-    protected StringJsonPathBasedExpression(ExpressionType type, String path, String value, boolean ignoreCase,
-            boolean extractValueFromPath, boolean defaultResult, PreOperation<?> preoperation) {
+    protected StringJsonPathBasedExpression(
+            ExpressionType type,
+            String path,
+            String value,
+            boolean ignoreCase,
+            boolean extractValueFromPath,
+            boolean defaultResult,
+            PreOperation<?> preoperation,
+            boolean valueCompareToPath
+    ) {
         super(type, path, defaultResult, preoperation);
         this.value = value;
         this.ignoreCase = ignoreCase;
         this.extractValueFromPath = extractValueFromPath;
+        this.valueCompareToPath = valueCompareToPath;
     }
 
     @Override
@@ -64,9 +74,18 @@ public abstract class StringJsonPathBasedExpression extends JsonPathBasedExpress
             if (jsonNode == null || !jsonNode.isTextual()) {
                 return false;
             }
-            return evaluate(evaluatedNode.asText(), jsonNode.asText(), ignoreCase);
+            if (valueCompareToPath) {
+                return evaluate(jsonNode.asText(), evaluatedNode.asText(), ignoreCase);
+            } else {
+                return evaluate(evaluatedNode.asText(), jsonNode.asText(), ignoreCase);
+            }
+
         }
-        return evaluate(evaluatedNode.asText(), value, ignoreCase);
+        if (valueCompareToPath) {
+            return evaluate(value, evaluatedNode.asText(), ignoreCase);
+        } else {
+            return evaluate(evaluatedNode.asText(), value, ignoreCase);
+        }
     }
 
     protected abstract boolean evaluate(String leftValue, String rightValue, boolean ignoreCase);

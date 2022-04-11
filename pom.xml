@@ -6,7 +6,7 @@
 
     <groupId>com.tencent.devops.rules</groupId>
     <artifactId>json-rules</artifactId>
-    <version>1.0.13</version>
+    <version>1.0.14</version>
     <name>JSON Rules</name>
     <description>Json serializable rule engine</description>
     <url> https://github.com/ci-plugins/json-rules</url>

@@ -27,6 +27,8 @@ import io.appform.jsonrules.expressions.preoperation.date.EpochOperation;
 import io.appform.jsonrules.expressions.preoperation.numeric.*;
 import io.appform.jsonrules.expressions.preoperation.string.LengthOperation;
 import io.appform.jsonrules.expressions.preoperation.string.SubStringOperation;
+import io.appform.jsonrules.expressions.preoperation.string.SubstringAfterOperation;
+import io.appform.jsonrules.expressions.preoperation.string.SubstringBeforeOperation;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -49,6 +51,8 @@ import lombok.ToString;
 
         @JsonSubTypes.Type(name = "length", value = LengthOperation.class),
         @JsonSubTypes.Type(name = "sub_str", value = SubStringOperation.class),
+		@JsonSubTypes.Type(name = "sub_str_before", value = SubstringBeforeOperation.class),
+		@JsonSubTypes.Type(name = "sub_str_after", value = SubstringAfterOperation.class),
 
         @JsonSubTypes.Type(name = "epoch", value = EpochOperation.class),
         @JsonSubTypes.Type(name = "date_time", value = DateTimeOperation.class),

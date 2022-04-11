@@ -40,7 +40,7 @@ public class CollectionExpressionTest {
     @Before
     public void setUp() throws Exception {
         mapper = new ObjectMapper();
-        JsonNode node = mapper.readTree("{ \"felines\": [\"leopard\",\"lion\",\"tiger\",\"jaguar\"],\"integers\": [10,20,30,40],\"decimals\": [10.01,20.22,30.33,40.55], \"emptyString\" : \"\", \"s3\" : \"Hello.*\", \"s1\" : \"HelloAllHello\", \"s2\" : \"Hello\",\"string\" : \"Hello\", \"kid\": null, \"boolean\" : true }");
+        JsonNode node = mapper.readTree("{ \"felines\": [\"leopard\",\"lion\",\"tiger\",\"jaguar\"],\"integers\": [10,20,30,40],\"decimals\": [10.01,20.22,30.33,40.55], \"emptyString\" : \"\", \"s3\" : \"Hello.*\", \"s1\" : \"HelloAllHello\", \"s2\" : \"Hello\",\"string\" : \"Hello\", \"kid\": null, \"boolean\" : true, \"branch\" : \"feature/issue_6000\" }");
         context = ExpressionEvaluationContext.builder().node(node).build();
     }
     
@@ -339,6 +339,24 @@ public class CollectionExpressionTest {
                 .path("$.decimals[0]")
                 .valuesPath("$.doesNotExist")
                 .extractValues(true)
+                .defaultResult(false)
+                .build()
+                .evaluate(context));
+    }
+
+    @Test
+    public void testInExpressionPattern() throws Exception {
+        Assert.assertTrue(InExpression.builder()
+                .path("$.branch")
+                .values(Sets.newHashSet("feature/**", "master"))
+                .extractValues(false)
+                .defaultResult(false)
+                .build()
+                .evaluate(context));
+        Assert.assertTrue(NotInExpression.builder()
+                .path("$.branch")
+                .values(Sets.newHashSet("master"))
+                .extractValues(false)
                 .defaultResult(false)
                 .build()
                 .evaluate(context));

@@ -41,8 +41,8 @@ public class StartsWithExpression extends StringJsonPathBasedExpression {
 
     @Builder
     public StartsWithExpression(String path, String value, boolean ignoreCase, boolean extractValueFromPath,
-            Boolean defaultResult, PreOperation<?> preoperation) {
-        super(ExpressionType.starts_with, path, value, ignoreCase, extractValueFromPath, defaultResult, preoperation);
+            Boolean defaultResult, PreOperation<?> preoperation, boolean valueCompareToPath) {
+        super(ExpressionType.starts_with, path, value, ignoreCase, extractValueFromPath, defaultResult, preoperation, valueCompareToPath);
     }
 
     @Override

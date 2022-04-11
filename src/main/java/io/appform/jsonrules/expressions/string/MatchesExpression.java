@@ -41,8 +41,8 @@ public class MatchesExpression extends StringJsonPathBasedExpression {
 
     @Builder
     public MatchesExpression(String path, String value, boolean ignoreCase, boolean extractValueFromPath,
-            Boolean defaultResult, PreOperation<?> preoperation) {
-        super(ExpressionType.matches, path, value, ignoreCase, extractValueFromPath, defaultResult, preoperation);
+            Boolean defaultResult, PreOperation<?> preoperation, boolean valueCompareToPath) {
+        super(ExpressionType.matches, path, value, ignoreCase, extractValueFromPath, defaultResult, preoperation, valueCompareToPath);
     }
 
     @Override

@@ -47,7 +47,9 @@ public class InExpression extends CollectionJsonPathBasedExpression {
     @Override
     protected boolean evaluate(JsonNode evaluatedNode, Set<Object> values) {
         return !ComparisonUtils.isNodeMissingOrNull(evaluatedNode)
-                && values.stream().anyMatch(value -> ComparisonUtils.compare(evaluatedNode, value) == 0);
+                && values.stream().anyMatch(value ->
+                ComparisonUtils.compare(evaluatedNode, value) == 0
+                        || ComparisonUtils.compareForPattern(evaluatedNode, value));
     }
 
     @Override
