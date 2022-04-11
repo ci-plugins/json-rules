@@ -426,7 +426,6 @@ public class AntPathMatcher {
      * <p>Assumes that {@link #match} returns {@code true} for '{@code pattern}' and '{@code path}', but
      * does <strong>not</strong> enforce this.
      */
-
     public String extractPathWithinPattern(String pattern, String path) {
         String[] patternParts = StringUtils.tokenizeToStringArray(pattern, this.pathSeparator, this.trimTokens, true);
         String[] pathParts = StringUtils.tokenizeToStringArray(path, this.pathSeparator, this.trimTokens, true);
@@ -488,7 +487,6 @@ public class AntPathMatcher {
      * @return the combination of the two patterns
      * @throws IllegalArgumentException if the two patterns cannot be combined
      */
-
     public String combine(String pattern1, String pattern2) {
         if (!StringUtils.hasText(pattern1) && !StringUtils.hasText(pattern2)) {
             return "";
@@ -569,7 +567,6 @@ public class AntPathMatcher {
      * @param path the full path to use for comparison
      * @return a comparator capable of sorting patterns in order of explicitness
      */
-
     public Comparator<String> getPatternComparator(String path) {
         return new AntPatternComparator(path);
     }
